@@ -113,7 +113,7 @@ func sendErrorResponse(w http.ResponseWriter, appError AppError, customMessage .
 	if len(customMessage) > 0 {
 		appError.Message = customMessage[0]
 	}
-	w.WriteHeader(http.StatusBadRequest) // Use an appropriate HTTP status code
+	w.WriteHeader(http.StatusBadRequest)
 	json.NewEncoder(w).Encode(appError)
 }
 

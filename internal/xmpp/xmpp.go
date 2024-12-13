@@ -14,7 +14,6 @@ var (
 
 func Init(ctx context.Context, server string, username string, password string) {
 
-	// XMPP client options
 	options := xmpp.Options{
 		Host:          fmt.Sprintf("%s:%s", server, "5222"),
 		User:          fmt.Sprintf("%s@%s", username, server),
@@ -26,7 +25,6 @@ func Init(ctx context.Context, server string, username string, password string) 
 		StatusMessage: "I'm here!",
 	}
 
-	// Connect to the XMPP server
 	var err error
 	xmppClient, err = options.NewClient()
 	if err != nil {
@@ -50,7 +48,7 @@ func SendMessage(recipient string, message string) error {
 
 	_, err := xmppClient.Send(xmpp.Chat{
 		Remote: recipient,
-		Type:   "chat", // Type of message (e.g., "chat", "groupchat")
+		Type:   "chat",
 		Text:   message,
 	})
 	if err != nil {

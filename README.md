@@ -80,10 +80,10 @@ curl -d '{"recipient": "@test1:server","message": "hello there"}' 'http://localh
 ```
 
 
-| Code | Description                  |
-|-----|------------------------------|
-| 1   | Invalid request body         |
-| 2   | Missing required fields      |
-| 3   | Wrong Recipient format       |
-| 4   | Unexpected messenger error   |
-| 5   | The user has blocked the bot |
+| Code | Description                       |
+|-----|-----------------------------------|
+| 1   | Invalid request body              |
+| 2   | Missing required fields           |
+| 3   | Wrong Recipient format            |
+| 4   | Unexpected messenger error        |
+| 5   | The recipient has blocked the bot |

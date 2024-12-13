@@ -22,7 +22,6 @@ func Init(context context.Context) {
 	userId := id.UserID(common.GetEnv("MATRIX_USER_ID", ""))
 	accessToken := common.GetEnv("MATRIX_ACCESS_TOKEN", "")
 
-	// Replace these placeholders with actual values
 	var err error
 	matrixClient, err = mautrix.NewClient("https://"+common.GetEnv("MATRIX_SERVER"), userId, accessToken)
 	if err != nil {
@@ -96,7 +95,6 @@ func leaveRoom(roomID id.RoomID) {
 }
 
 func getOrCreateDMRoom(userID id.UserID) (id.RoomID, error) {
-	// Create a new room for direct messaging
 
 	room := userChats[userID]
 
