@@ -1,4 +1,4 @@
-# REST service to send XMPP messages
+# REST service to send XMPP/Telegram/Matrix messages
 
 
 ## Prepare and run
@@ -36,3 +36,54 @@ to see logs:
 ```bash
 docker-compose logs -f
 ```
+
+
+## Usage
+
+#### XMPP:
+
+```bash
+curl -d '{"recipient": "test1@server","message": "hello there"}' 'http://localhost:8080/xmpp'
+```
+
+#### Telegram:
+
+```bash
+curl -d '{"recipient": 123456789,"message": "hello there"}' 'http://localhost:8080/telegram'
+```
+
+#### Matrix:
+
+```bash
+curl -d '{"recipient": "@test1:server","message": "hello there"}' 'http://localhost:8080/matrix'
+```
+
+### Service responses
+
+`200 - Success`
+
+```json
+{
+  "status": "sent",
+  "message":"hello there"
+}
+```
+
+`400 - Bad request`
+
+```json
+{
+  "code": 1,
+  "message": "Invalid request body"
+
+}
+```
+
+
+| Code | Description                  |
+|-----|------------------------------|
+| 1   | Invalid request body         |
+| 2   | Missing required fields      |
+| 3   | Wrong Recipient format       |
+| 4   | Unexpected messenger error   |
+| 5   | The user has blocked the bot |
